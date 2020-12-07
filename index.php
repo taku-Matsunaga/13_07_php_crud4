@@ -101,9 +101,15 @@ a.movieLink:hover {
             <input type="text" id="keyword" name="keyword" value="<?=$keyword?>" />
             <input type="submit" value="検索" />
         </form>
+        <div>
+            <a href="read.php">保存動画一覧</a>
+        </div>
     </div>
     <div id="main_box" class="clearfix">
     <?php 
+
+    echo '<form action="create.php" method="POST">';
+
     foreach($videos as $video) :
         echo '<div class="movieBox">';
         echo '<a class="movieLink" href="https://www.youtube.com/watch?v=' . $video['id']['videoId'] . '">';
@@ -115,9 +121,18 @@ a.movieLink:hover {
         echo '<div>' . $video['snippet']['description'] . '</div>';
         echo '</div>';
         echo '</a>';
+
+        echo '<div>';
+        echo '</div>';
+        echo '    <input type="radio" name="video" value="https://www.youtube.com/watch?v=' . $video['id']['videoId'] . '">';
         echo '</div>';
     endforeach;
+
+        echo '<button>Submit</button>';
+        echo '</form>';
     ?>
+    </div>
+    <div>
     </div>
 </div>
 </body>

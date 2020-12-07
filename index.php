@@ -125,6 +125,8 @@ a.movieLink:hover {
         echo '<div>';
         echo '</div>';
         echo '    <input type="radio" name="video" value="https://www.youtube.com/watch?v=' . $video['id']['videoId'] . '">';
+        echo '<input type="hidden" name="thumb" value=' . $video["snippet"]["thumbnails"]["default"]["url"] .'>';
+        echo '<input type="hidden" name="title" value=' . $video['snippet']['title'] . '>';
         echo '</div>';
     endforeach;
 

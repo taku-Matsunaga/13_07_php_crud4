@@ -26,8 +26,9 @@ if ($status == false) {
   $output = "";
   foreach ($result as $record) {
     $output .= "<div>";
-    // var_dump($record["video"]);
-    $output .= "<a href='{$record['video']}'>保存した動画</a>";
+    // var_dump($record["thumb"]);
+    $output .= "<img src='{$record['thumb']}' />";
+    $output .= "<a href='{$record['video']}'>{$record['title']}</a>";
     $output .= "</div>";
   }
 }

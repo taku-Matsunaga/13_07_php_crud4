@@ -2,7 +2,7 @@
 
 require_once (dirname(__FILE__) . '/vendor/autoload.php');
 
-define("API_KEY","AIzaSyDrt-9llJeTZyu_eh24p5URc8-k3aOzNx0");
+define("API_KEY","AIzaSyCBnN_EElLdqMs0MJ3ZLF4D79pX0seWlKA");
 
 $client = new Google_Client();
 $client->setApplicationName("xxxxxxxxxxx");

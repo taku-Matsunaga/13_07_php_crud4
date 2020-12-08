@@ -52,6 +52,9 @@ if ($status == false) {
       <!-- ここに<tr><td>deadline</td><td>todo</td><tr>の形でデータが入る -->
       <?= $output ?>
     </div>
+    <div>
+      <a href="delete.php">全て削除する</a>
+    </div>
   </fieldset>
 </body>
 

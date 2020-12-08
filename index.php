@@ -108,10 +108,10 @@ a.movieLink:hover {
     <div id="main_box" class="clearfix">
     <?php 
 
-    echo '<form action="create.php" method="POST">';
 
-    foreach($videos as $video) :
-        echo '<div class="movieBox">';
+foreach($videos as $video) :
+    echo '<form action="create.php" method="POST">';
+    echo '<div class="movieBox">';
         echo '<a class="movieLink" href="https://www.youtube.com/watch?v=' . $video['id']['videoId'] . '">';
         echo '<div class="thums">';
         echo '<img src="' . $video['snippet']['thumbnails']['default']['url']. '" />';
@@ -125,13 +125,13 @@ a.movieLink:hover {
         echo '<div>';
         echo '</div>';
         echo '    <input type="radio" name="video" value="https://www.youtube.com/watch?v=' . $video['id']['videoId'] . '">';
-        echo '<input type="hidden" name="thumb" value=' . $video["snippet"]["thumbnails"]["default"]["url"] .'>';
-        echo '<input type="hidden" name="title" value=' . $video['snippet']['title'] . '>';
+        echo '<input type="text" name="thumb" value="' . $video["snippet"]["thumbnails"]["default"]["url"] .'">';
+        echo '<input type="text" name="title" value="' . $video['snippet']['title'] . '">';
         echo '</div>';
-    endforeach;
-
         echo '<button>Submit</button>';
         echo '</form>';
+    endforeach;
+
     ?>
     </div>
     <div>

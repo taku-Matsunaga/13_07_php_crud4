@@ -2,7 +2,7 @@
 
 require_once (dirname(__FILE__) . '/vendor/autoload.php');
 
-define("API_KEY","");
+define("API_KEY","AIzaSyDrt-9llJeTZyu_eh24p5URc8-k3aOzNx0");
 
 $client = new Google_Client();
 $client->setApplicationName("xxxxxxxxxxx");
@@ -92,6 +92,34 @@ a.movieLink:hover {
     width: 1000px;
     word-break: break-all;
 }
+
+.radioArea{
+    display: flex;
+    margin: 20px;
+}
+
+.radioArea input{
+    width: 30px;
+    height: 30px;
+    margin: auto 20px;
+}
+
+.radioArea p{
+    margin: auto 0;
+}
+
+.commentBox{
+    width: 100%;
+}
+
+.commentBox input{
+    width: 50%;
+    margin: auto 20px;
+}
+
+.tac{
+    text-align: center;
+}
 </style>
 </head>
 <body>
@@ -121,14 +149,18 @@ foreach($videos as $video) :
         echo '<div>' . $video['snippet']['description'] . '</div>';
         echo '</div>';
         echo '</a>';
-
-        echo '<div>';
+        echo '<div class = "radioArea"><input type="hidden" name="video" value="https://www.youtube.com/watch?v=' . $video['id']['videoId'] . '">';
+        echo '<input type="hidden" name="thumb" value="' . $video["snippet"]["thumbnails"]["default"]["url"] .'">';
+        echo '<input type="hidden" name="title" value="' . $video['snippet']['title'] . '">';
+        echo '<div class = "commentBox">コメント:<input type="text" name="comment" value="">';
+        echo '<select name="purpose">';
+        echo '<option value="後で観る">後で観る</option>';
+        echo '<option value="お気に入り">お気に入り</option>';
+        echo '<option value="共有する">共有する</option>';
+        echo '<option value="その他">その他</option>';
+        echo '</select></div>';
         echo '</div>';
-        echo '    <input type="radio" name="video" value="https://www.youtube.com/watch?v=' . $video['id']['videoId'] . '">';
-        echo '<input type="text" name="thumb" value="' . $video["snippet"]["thumbnails"]["default"]["url"] .'">';
-        echo '<input type="text" name="title" value="' . $video['snippet']['title'] . '">';
-        echo '</div>';
-        echo '<button>Submit</button>';
+        echo '<div class = "tac"><button>Submit</button></div>';
         echo '</form>';
     endforeach;
 

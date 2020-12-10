@@ -13,26 +13,35 @@ if(
 $video = $_POST['video'];
 $thumb = $_POST['thumb'];
 $title = $_POST['title'];
+$comment = $_POST['comment'];
+$purpose = $_POST['purpose'];
 
-// DB接続情報
-$dbn = 'mysql:dbname=gsacf_f04_07;charset=utf8;port=3306;host=localhost';
-$user = 'root';
-$pwd = 'root';
+// // DB接続情報
+// $dbn = 'mysql:dbname=gsacf_f04_07;charset=utf8;port=3306;host=localhost';
+// $user = 'root';
+// $pwd = 'root';
 
-// DB接続
-try {
-  $pdo = new PDO($dbn, $user, $pwd);
-} catch (PDOException $e) {
-  echo json_encode(["db error" => "{$e->getMessage()}"]);
-  exit();
-}
+// // DB接続
+// try {
+//   $pdo = new PDO($dbn, $user, $pwd);
+// } catch (PDOException $e) {
+//   echo json_encode(["db error" => "{$e->getMessage()}"]);
+//   exit();
+// }
+
+include('functions.php');
+$pdo = connect_to_db();
+
+var_dump($pdo);
 
 // SQL作成&実行
-$sql = 'INSERT INTO video_table(id, video, thumb, title, created_at, updated_at) VALUES(NULL, :video, :thumb, :title,  sysdate(), sysdate())';
+$sql = 'INSERT INTO video_table(id, video, thumb, title, comment, purpose, created_at, updated_at) VALUES(NULL, :video, :thumb, :title, :comment, :purpose,  sysdate(), sysdate())';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':video', $video, PDO::PARAM_STR);
 $stmt->bindValue(':thumb', $thumb, PDO::PARAM_STR);
 $stmt->bindValue(':title', $title, PDO::PARAM_STR);
+$stmt->bindValue(':comment', $comment, PDO::PARAM_STR);
+$stmt->bindValue(':purpose', $purpose, PDO::PARAM_STR);
 $status = $stmt->execute(); // SQLを実行
 
 // 失敗時にエラーを出力し，成功時は登録画面に戻る

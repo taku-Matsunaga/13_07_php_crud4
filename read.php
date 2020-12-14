@@ -111,7 +111,7 @@ if ($status == false) {
 <body>
   <fieldset>
     <legend>保存動画一覧</legend>
-    <a class="indexBtn" href="index.php">入力画面</a>
+    <a class="indexBtn" href="search.php">入力画面</a>
     <div class="innerBox">
       <!-- ここに<tr><td>deadline</td><td>todo</td><tr>の形でデータが入る -->
       <?= $output ?>

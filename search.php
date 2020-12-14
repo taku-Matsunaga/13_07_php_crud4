@@ -1,5 +1,12 @@
 <?php 
 
+session_start();
+include('functions.php'); // 関数ファイル読み込み
+
+
+
+check_session_id();
+
 require_once (dirname(__FILE__) . '/vendor/autoload.php');
 
 define("API_KEY","AIzaSyDrt-9llJeTZyu_eh24p5URc8-k3aOzNx0");
@@ -131,6 +138,7 @@ a.movieLink:hover {
         </form>
         <div>
             <a href="read.php">保存動画一覧</a>
+            <a href="logout.php">ログアウト</a>
         </div>
     </div>
     <div id="main_box" class="clearfix">

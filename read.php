@@ -40,8 +40,8 @@ if ($status == false) {
     $output .= "<div>コメント<div class = 'commentArea'>{$record['comment']}</div></div>";
     $output .= "<div>保存目的<div class = 'purposeArea'>{$record['purpose']}</div></div>";
     $output .= "</div>";
-    
-    if($_SESSION["username_id"] == $record['user_id']){
+
+    if ($_SESSION["username_id"] == $record['user_id']) {
       $output .= "<div class = 'choiceBtn'><a href='edit.php?id={$record["id"]}'>Edit</a></div>";
       $output .= "<div class = 'choiceBtn'><a href='solo_delete.php?id={$record["id"]}'>Delete</a></div>";
     }
@@ -60,55 +60,55 @@ if ($status == false) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>保存動画一覧</title>
   <style>
-    .innerBox{
+    .innerBox {
       width: 70%;
       margin: auto;
     }
 
-    .outBox{
+    .outBox {
       border: 1px solid #666;
       padding: 10px;
       margin: 10px;
     }
 
-    .thumbTitle{
+    .thumbTitle {
       display: flex;
     }
 
-    .thumbTitle img{
+    .thumbTitle img {
       width: 30%;
     }
 
-    .thumbTitle a{
+    .thumbTitle a {
       width: 60%;
       margin: auto;
     }
 
-    .commentArea{
+    .commentArea {
       background-color: aliceblue;
       margin: 10px;
       padding: 10px;
     }
 
-    .purposeArea{
+    .purposeArea {
       background-color: lavenderblush;
       margin: 10px;
       padding: 10px;
     }
 
-    .indexBtn{
+    .indexBtn {
       display: block;
       text-align: center;
       font-size: 1.5rem;
       font-weight: bold;
     }
 
-    .choiceBtn{
+    .choiceBtn {
       text-align: center;
       font-weight: bold;
     }
 
-    .tac{
+    .tac {
       text-align: center;
     }
   </style>
@@ -117,14 +117,25 @@ if ($status == false) {
 <body>
   <fieldset>
     <legend>保存動画一覧</legend>
-    <a class="indexBtn" href="search.php">入力画面</a>
+
+    <?php if ($_SESSION["username_id"] == '') : ?>
+      <a class="indexBtn" href="login.php">ログイン画面へ</a>
+    <?php else: ?>
+      <a class="indexBtn" href="search.php">入力画面</a>
+    <?php endif ?>
+
     <div class="innerBox">
       <!-- ここに<tr><td>deadline</td><td>todo</td><tr>の形でデータが入る -->
       <?= $output ?>
     </div>
-    <div class="tac">
-      <a href="delete.php">全て削除する</a>
-    </div>
+
+    <?php if (!$_SESSION["username_id"] == '') : ?>
+
+      <div class="tac">
+        <a href="delete.php">全て削除する</a>
+      </div>
+
+    <?php endif ?>
   </fieldset>
 </body>
 

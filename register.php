@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>todoリストユーザ登録画面</title>
+  <title>ユーザ登録画面</title>
 </head>
 
 <body>
   <form action="register_act.php" method="POST">
     <fieldset>
-      <legend>todoリストユーザ登録画面</legend>
+      <legend>ユーザ登録画面</legend>
       <div>
         user_id: <input type="text" name="username">
       </div>

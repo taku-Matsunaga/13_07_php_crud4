@@ -40,8 +40,12 @@ if ($status == false) {
     $output .= "<div>コメント<div class = 'commentArea'>{$record['comment']}</div></div>";
     $output .= "<div>保存目的<div class = 'purposeArea'>{$record['purpose']}</div></div>";
     $output .= "</div>";
-    $output .= "<div class = 'choiceBtn'><a href='edit.php?id={$record["id"]}'>Edit</a></div>";
-    $output .= "<div class = 'choiceBtn'><a href='solo_delete.php?id={$record["id"]}'>Delete</a></div>";
+    
+    if($_SESSION["username_id"] == $record['user_id']){
+      $output .= "<div class = 'choiceBtn'><a href='edit.php?id={$record["id"]}'>Edit</a></div>";
+      $output .= "<div class = 'choiceBtn'><a href='solo_delete.php?id={$record["id"]}'>Delete</a></div>";
+    }
+
     $output .= "</div>";
   }
 }

@@ -35,6 +35,8 @@ if ($status == false) {
     $_SESSION["session_id"] = session_id();
     $_SESSION["is_admin"] = $val["is_admin"];
     $_SESSION["username"] = $val["username"];
+    $_SESSION["username_id"] = $val["id"];
+
 
     // var_dump($_SESSION);
     // exit();

@@ -13,6 +13,8 @@
 //   exit();
 // }
 
+session_start();
+
 include('functions.php');
 $pdo = connect_to_db();
 

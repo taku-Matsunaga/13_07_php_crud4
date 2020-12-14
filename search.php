@@ -144,6 +144,8 @@ a.movieLink:hover {
     <div id="main_box" class="clearfix">
     <?php 
 
+// var_dump($_SESSION["username_id"]);
+// exit();
 
 foreach($videos as $video) :
     echo '<form action="create.php" method="POST">';
@@ -160,6 +162,7 @@ foreach($videos as $video) :
         echo '<div class = "radioArea"><input type="hidden" name="video" value="https://www.youtube.com/watch?v=' . $video['id']['videoId'] . '">';
         echo '<input type="hidden" name="thumb" value="' . $video["snippet"]["thumbnails"]["default"]["url"] .'">';
         echo '<input type="hidden" name="title" value="' . $video['snippet']['title'] . '">';
+        echo '<input type="hidden" name="user_id" value="' . $_SESSION["username_id"] . '">';
         echo '<div class = "commentBox">コメント:<input type="text" name="comment" value="">';
         echo '<select name="purpose">';
         echo '<option value="後で観る">後で観る</option>';

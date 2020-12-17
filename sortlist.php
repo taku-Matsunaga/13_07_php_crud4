@@ -1,33 +1,22 @@
 <?php
-
-// // DB接続情報
-// $dbn = 'mysql:dbname=gsacf_f04_07;charset=utf8;port=3306;host=localhost';
-// $user = 'root';
-// $pwd = 'root';
-
-// // DB接続
-// try {
-//   $pdo = new PDO($dbn, $user, $pwd);
-// } catch (PDOException $e) {
-//   echo json_encode(["db error" => "{$e->getMessage()}"]);
-//   exit();
-// }
-
 session_start();
-
 include('functions.php');
+
+// // idをgetで受け取る
+// $id = $_GET['id'];
+
 $pdo = connect_to_db();
 
 // ユーザ名取得
 $user_id = $_SESSION['username_id'];
 
+$pdo = connect_to_db();
 
-// SQL作成&実行
-// $sql = 'SELECT * FROM video_table';
-$sql = 'SELECT * FROM video_table LEFT OUTER JOIN (SELECT video_id, COUNT(id) AS cnt FROM video_like_table GROUP BY video_id) AS likes ON video_table.id = likes.video_id';
+// idを指定して更新するSQLを作成 -> 実行の処理
+$sql = 'SELECT * FROM video_table LEFT OUTER JOIN (SELECT video_id, COUNT(id) AS cnt FROM video_like_table GROUP BY video_id) AS likes ON video_table.id = likes.video_id ORDER BY cnt desc';
 
 $stmt = $pdo->prepare($sql);
-$status = $stmt->execute(); // SQLを実行
+$status = $stmt->execute();
 
 if ($status == false) {
   $error = $stmt->errorInfo();

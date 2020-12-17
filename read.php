@@ -18,8 +18,14 @@ session_start();
 include('functions.php');
 $pdo = connect_to_db();
 
+// ユーザ名取得
+$user_id = $_SESSION['username_id'];
+
+
 // SQL作成&実行
-$sql = 'SELECT * FROM video_table';
+// $sql = 'SELECT * FROM video_table';
+$sql = 'SELECT * FROM video_table LEFT OUTER JOIN (SELECT video_id, COUNT(id) AS cnt FROM video_like_table GROUP BY video_id) AS likes ON video_table.id = likes.video_id';
+
 $stmt = $pdo->prepare($sql);
 $status = $stmt->execute(); // SQLを実行
 
@@ -37,6 +43,7 @@ if ($status == false) {
     $output .= "<img src='{$record['thumb']}' />";
     $output .= "<a href='{$record['video']}'>{$record['title']}</a>";
     $output .= "</div>";
+    $output .= "<td><a href='like_create.php?user_id={$user_id}&video_id={$record["id"]}'>like{$record["cnt"]}</a></td>";
     $output .= "<div>コメント<div class = 'commentArea'>{$record['comment']}</div></div>";
     $output .= "<div>保存目的<div class = 'purposeArea'>{$record['purpose']}</div></div>";
     $output .= "</div>";

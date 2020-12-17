@@ -1,7 +1,10 @@
 <?php
 
+session_start();
+
 // 関数ファイル読み込み
 include("functions.php");
+check_admin();
 
 // 送信されたidをgetで受け取る
 $id = $_GET['id'];

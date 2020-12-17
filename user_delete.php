@@ -1,5 +1,8 @@
 <?php
+
+session_start();
 include('functions.php');
+check_admin();
 
 // idをgetで受け取る
 $id = $_GET['id'];

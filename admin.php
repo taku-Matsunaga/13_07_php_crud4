@@ -3,6 +3,7 @@
 session_start();
 
 include('functions.php');
+check_admin();
 $pdo = connect_to_db();
 
 // SQL作成&実行

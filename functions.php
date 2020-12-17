@@ -30,3 +30,12 @@ session_regenerate_id(true); // セッションidの再生成
 $_SESSION['session_id'] = session_id(); // セッション変数上書き
 }
 }
+
+// adminのチェック関数
+function check_admin()
+{
+  // 失敗時はログイン画面に戻る
+if ($_SESSION["is_admin"] == 0 || $_SESSION["is_admin"] == '') {
+header('Location:login.php'); // ログイン画面へ移動
+}
+}
